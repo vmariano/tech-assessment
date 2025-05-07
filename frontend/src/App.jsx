@@ -2,11 +2,10 @@ import React, {useState} from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
-import Dashboard from "./orders/dashboard/Dasboard.jsx";
-import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
+import {QueryClient,  QueryClientProvider} from "@tanstack/react-query";
 import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
-
-const queryClient = new QueryClient()
+import OrdersList from "./orders/Orders/OrdersList.jsx";
+const queryClient = new QueryClient();
 
 function App() {
     const [count, setCount] = useState(0)
@@ -14,6 +13,8 @@ function App() {
         <>
             <React.StrictMode>
                 <QueryClientProvider client={queryClient}>
+                    <ReactQueryDevtools />
+
                     <div>
                         <a href="https://vite.dev" target="_blank">
                             <img src={viteLogo} className="logo" alt="Vite logo"/>
@@ -34,8 +35,7 @@ function App() {
                     <p className="read-the-docs">
                         Click on the Vite and React logos to learn more
                     </p>
-                    <Dashboard/>
-                    <ReactQueryDevtools initialIsOpen={false}/>
+                    <OrdersList/>
                 </QueryClientProvider>
             </React.StrictMode>
         </>

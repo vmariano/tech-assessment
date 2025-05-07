@@ -20,7 +20,7 @@ const columns = [
     }
 ];
 
-function Dashboard() {
+function OrdersList() {
     const { data = [] } = useGetOrders();
     const table = useReactTable({
         data: data,
@@ -53,4 +53,4 @@ function Dashboard() {
     );
 }
 
-export default Dashboard;
+export default OrdersList;
