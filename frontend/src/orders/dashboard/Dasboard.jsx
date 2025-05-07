@@ -5,18 +5,18 @@ const columns = [
     {
         accessorKey: 'id',
         header: '#',
-        cell: props => <td>{props.getValue()}</td>,
+        cell: props => props.getValue(),
     },
     {
         accessorKey: 'orderName',
         header: 'Order name',
-        cell: props => <td>{props.getValue()}</td>,
+        cell: props => props.getValue(),
 
     },
     {
         accessorKey: 'description',
         header: 'Description',
-        cell: props => <td>{props.getValue()}</td>,
+        cell: props => props.getValue(),
     }
 ];
 
@@ -29,24 +29,22 @@ function Dashboard() {
     })
 
     return (
-        <table>
+        <table width={table.getTotalSize()}>
             <thead>
-            {table.getHeaderGroups().map(headerGroup => {
-                return (
+                {table.getHeaderGroups().map(headerGroup => {
+                    return (
                     <tr key={headerGroup.id}>
                         {headerGroup.headers.map(header => {
-                            return (<th key={header.id}>{header.column.columnDef.header}</th>
-                            );
+                            return (<th width={header.column.getSize()} key={header.id}>{header.column.columnDef.header}</th>);
                         })}
-                    </tr>
-                );
-            })}
+                    </tr>);
+                })}
             </thead>
             <tbody>
                 {table.getRowModel().rows.map(row => (
                     <tr key={row.id}>
                         {row.getVisibleCells().map(cell => {
-                            return flexRender(cell.column.columnDef.cell, cell.getContext());
+                            return <td key={cell.id}>{flexRender(cell.column.columnDef.cell, cell.getContext())}</td>
                         })}
                     </tr>
                 ))}
