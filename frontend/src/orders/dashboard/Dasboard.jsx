@@ -1,13 +1,5 @@
 import {flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table';
-
-
-const data = [
-    {
-        id: 1,
-        orderName: "Order 1",
-        description: "Description 1",
-    }
-]
+import {useGetOrders} from "./api.js";
 
 const columns = [
     {
@@ -29,6 +21,7 @@ const columns = [
 ];
 
 function Dashboard() {
+    const { data = [] } = useGetOrders();
     const table = useReactTable({
         data: data,
         columns: columns,
@@ -39,7 +32,6 @@ function Dashboard() {
         <table>
             <thead>
             {table.getHeaderGroups().map(headerGroup => {
-                console.log(headerGroup);
                 return (
                     <tr key={headerGroup.id}>
                         {headerGroup.headers.map(header => {
