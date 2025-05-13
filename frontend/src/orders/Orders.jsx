@@ -1,5 +1,5 @@
 import CreateOrderDialog from "./CreateOrderDialog.jsx";
-import OrdersList from "./OrderList/OrdersList.jsx";
+import OrdersList from "./OrdersList.jsx";
 import {useState} from "react";
 
 
