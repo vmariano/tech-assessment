@@ -1,4 +1,4 @@
-import {useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery} from "@tanstack/react-query";
 
 //TODO: implement api connection
 async function getOrders() {
@@ -38,3 +38,11 @@ export const useGetOrders = () => {
     })
 }
 
+/**
+ * Hook to save data.
+ */
+export const useCreateOrder = (order) => {
+    return useMutation({
+        mutationFn: () => console.log(`save order: ${order}`),
+    })
+}

@@ -1,19 +1,33 @@
-
-
+import {useCreateOrder} from "./api.js";
+import { ErrorBoundary } from "react-error-boundary";
 
 function CreateOrderDialog({dialogOpen, onClose}) {
-    // TODO: call mutation here.
-    // useMutation()
+    const createOrder = useCreateOrder();
+
+    //TODO: apply mutation
+    const onSubmit = (form) => {
+        const payload = {
+            orderName: form.get("orderName").value,
+            description: form.get("description").value,
+        }
+
+        createOrder(payload);
+        console.log(`create order: ${form}`);
+        onClose();
+    }
+
 
     return (
         <dialog open={dialogOpen} >
             <h3>Create a new order</h3>
-            <form method="dialog">
+            <ErrorBoundary fallback={<p>There was an error while creating the order</p>}>
+            <form method="dialog" action={onSubmit}>
                 <p><input type="text" placeholder="Order name" /></p>
                 <p><input type="text" placeholder="Description" /></p>
-                <button onClick={() => onClose}>Create</button>
+                <button  type='submit' >Create</button>
                 <button onClick={onClose}>Cancel</button>
             </form>
+            </ErrorBoundary>
         </dialog>
     )
 }
