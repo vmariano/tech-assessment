@@ -1,0 +1,12 @@
+### Get list or orders
+GET http://localhost:3000/orders
+
+
+### Add new order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "name": "Order name",
+  "description": "Order description"
+}
