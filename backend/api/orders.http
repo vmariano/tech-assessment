@@ -10,3 +10,14 @@ Content-Type: application/json
   "name": "Order name",
   "description": "Order description"
 }
+
+
+
+### Fail to create order
+POST http://localhost:3000/orders
+Content-Type: application/json
+
+{
+  "caca": 111
+  "description": "Order description"
+}
