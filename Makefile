@@ -13,8 +13,11 @@ stop:
 rails.c:
 	docker-compose run backend rails c
 
-sh:
+sh-backend:
 	docker-compose run backend sh
+
+sh-frontend:
+	docker-compose run frontend sh
 
 db.init:
 	docker-compose run backend bundle exec rake db:create db:migrate db:seed
