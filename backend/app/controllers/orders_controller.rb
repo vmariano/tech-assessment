@@ -7,7 +7,6 @@ class OrdersController < ApplicationController
   end
 
 
-
   def create
     @order = Order.create(orders_params)
     if @order.save
@@ -20,6 +19,6 @@ class OrdersController < ApplicationController
   private
 
   def orders_params
-    params.require(:order).permit(:name)
+    params.require(:order).permit(:name, :order_description)
   end
 end
