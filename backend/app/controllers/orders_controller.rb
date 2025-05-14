@@ -9,7 +9,9 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.create(orders_params)
-    if @order.save
+    service = OrderCreationService.new(@order)
+
+    if service.call
       render json: @order
     else
       render json: { errors: @order.errors.full_messages }, status: 422
