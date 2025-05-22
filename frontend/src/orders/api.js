@@ -30,6 +30,6 @@ export const useCreateOrder = () => {
     const queryClient = useQueryClient()
     return useMutation({
         mutationFn:  saveOrder,
-        onSuccess: () => queryClient.invalidateQueries('orders'),
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ['todos'] }),
     })
 }
