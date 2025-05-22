@@ -8,6 +8,11 @@ async function getOrders() {
     return data;
 }
 
+async function saveOrder(order) {
+    console.log(order);
+    return axios.post(`${BACKEND_MAIN_URL}/orders`, order);
+}
+
 /**
  * Hook to return / fetch data.
  */
@@ -21,8 +26,8 @@ export const useGetOrders = () => {
 /**
  * Hook to save data.
  */
-export const useCreateOrder = (order) => {
+export const useCreateOrder = () => {
     return useMutation({
-        mutationFn: () => console.log(`save order: ${order}`),
+        mutationFn:  saveOrder
     })
 }

@@ -2,17 +2,15 @@ import {useCreateOrder} from "./api.js";
 import { ErrorBoundary } from "react-error-boundary";
 
 function CreateOrderDialog({dialogOpen, onClose}) {
-    const createOrder = useCreateOrder();
+    const createOrderMutation = useCreateOrder();
 
     //TODO: apply mutation
     const onSubmit = (form) => {
         const payload = {
-            orderName: form.get("orderName").value,
-            description: form.get("description").value,
+            name: form.get("orderName"),
+            description: form.get("description"),
         }
-
-        createOrder(payload);
-        console.log(`create order: ${form}`);
+        createOrderMutation.mutate(payload);
         onClose();
     }
 
