@@ -20,7 +20,12 @@ function CreateOrderDialog({dialogOpen, onClose}) {
     return (
         <dialog open={dialogOpen} >
             <h3>Create a new order</h3>
-            <ErrorBoundary fallback={<p>There was an error while creating the order</p>}>
+            <ErrorBoundary fallback={
+                <p>
+                    <p>There was an error while creating the order </p>
+                    <button onClick={onClose}>Cancel</button>
+                </p>
+            }>
             <form method="dialog" action={onSubmit}>
                 <p><input type="text" placeholder="Order name" name="orderName" /></p>
                 <p><input type="text" placeholder="Description" name="description" /></p>
