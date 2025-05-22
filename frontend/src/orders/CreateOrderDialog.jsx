@@ -4,7 +4,6 @@ import { ErrorBoundary } from "react-error-boundary";
 function CreateOrderDialog({dialogOpen, onClose}) {
     const createOrderMutation = useCreateOrder();
 
-    //TODO: apply mutation
     const onSubmit = (form) => {
         const payload = {
             name: form.get("orderName"),
