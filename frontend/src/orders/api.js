@@ -1,4 +1,4 @@
-import {useMutation, useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
 import axios from 'axios';
 
 const BACKEND_MAIN_URL = 'http://localhost:3000';
@@ -27,7 +27,9 @@ export const useGetOrders = () => {
  * Hook to save data.
  */
 export const useCreateOrder = () => {
+    const queryClient = useQueryClient()
     return useMutation({
-        mutationFn:  saveOrder
+        mutationFn:  saveOrder,
+        onSuccess: () => queryClient.invalidateQueries('orders'),
     })
 }
