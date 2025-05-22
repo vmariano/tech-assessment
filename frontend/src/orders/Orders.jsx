@@ -2,8 +2,6 @@ import CreateOrderDialog from "./CreateOrderDialog.jsx";
 import OrdersList from "./OrdersList.jsx";
 import {useState} from "react";
 
-
-
 function Orders() {
     const [dialogOpen, setDialogOpen] = useState(false);
     return (

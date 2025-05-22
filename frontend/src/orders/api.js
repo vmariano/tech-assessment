@@ -1,32 +1,17 @@
-import {useMutation, useQuery} from "@tanstack/react-query";
+import {useMutation, useQuery, useQueryClient} from "@tanstack/react-query";
+import axios from 'axios';
 
-//TODO: implement api connection
+const BACKEND_MAIN_URL = 'http://localhost:3000';
+
 async function getOrders() {
-    // Simulating API delay with setTimeout
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            resolve([
-                {
-                    id: 1,
-                    orderName: "Order 1",
-                    description: "Description 1",
-                },
-                {
-                    id: 2,
-                    orderName: "Order 2",
-                    description: "Description 2",
-                },
-                {
-                    id: 3,
-                    orderName: "Order 3",
-                    description: "Description 3",
-                }
-            ]);
-        }, 3000);
-    });
+    const { data = [] } = await axios.get(`${BACKEND_MAIN_URL}/orders`);
+    return data;
 }
 
-
+async function saveOrder(order) {
+    console.log(order);
+    return axios.post(`${BACKEND_MAIN_URL}/orders`, order);
+}
 
 /**
  * Hook to return / fetch data.
@@ -34,15 +19,17 @@ async function getOrders() {
 export const useGetOrders = () => {
     return useQuery({
         queryKey: ['orders'],
-        queryFn: () =>  getOrders(),
+        queryFn: getOrders,
     })
 }
 
 /**
  * Hook to save data.
  */
-export const useCreateOrder = (order) => {
+export const useCreateOrder = () => {
+    const queryClient = useQueryClient()
     return useMutation({
-        mutationFn: () => console.log(`save order: ${order}`),
+        mutationFn:  saveOrder,
+        onSuccess: () => queryClient.invalidateQueries({ queryKey: ['orders']}),
     })
 }
