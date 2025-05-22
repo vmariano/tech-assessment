@@ -8,7 +8,7 @@ const columns = [
         cell: props => props.getValue(),
     },
     {
-        accessorKey: 'orderName',
+        accessorKey: 'name',
         header: 'Order name',
         cell: props => props.getValue(),
 
