@@ -1,6 +1,5 @@
 import {useCreateOrder} from "./api.js";
 import { ErrorBoundary } from "react-error-boundary";
-import {useRef} from "react";
 
 function CreateOrderDialog({dialogOpen, onClose}) {
     const createOrderMutation = useCreateOrder();

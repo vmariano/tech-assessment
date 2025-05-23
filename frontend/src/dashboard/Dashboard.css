@@ -1,0 +1,15 @@
+
+.dashboard {
+    border: 3px #eeee;
+    border-style: dashed;
+    margin: 2em;
+    max-width: 11em;
+}
+
+.dashboard h1 {
+    color: #646cff;
+}
+
+.dashboard p {
+    color: #eeeeee;
+}

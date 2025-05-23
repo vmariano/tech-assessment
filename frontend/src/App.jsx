@@ -6,6 +6,8 @@ import './App.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import Orders from "./orders/Orders.jsx";
+import Dashboard from "./dashboard/Dashboard.jsx";
+import { DashboardProvider } from "./contexts/DashboardContext.jsx";
 
 const queryClient = new QueryClient();
 
@@ -14,28 +16,13 @@ function App() {
     return (
         <>
             <QueryClientProvider client={queryClient}>
-                <div>
-                    <a href="https://vite.dev" target="_blank">
-                        <img src={viteLogo} className="logo" alt="Vite logo"/>
-                    </a>
-                    <a href="https://react.dev" target="_blank">
-                        <img src={reactLogo} className="logo react" alt="React logo"/>
-                    </a>
-                </div>
-                <h1>Vite + React</h1>
-                <div className="card">
-                    <button onClick={() => setCount((count) => count + 1)}>
-                        count is {count}
-                    </button>
-                    <p>
-                        Edit <code>src/App.jsx</code> and save to test HMR
-                    </p>
-                </div>
-                <p className="read-the-docs">
-                    Click on the Vite and React logos to learn more
-                </p>
-                <Orders/>
-                <ReactQueryDevtools/>
+                <DashboardProvider>
+                    <div>
+                        <Dashboard />
+                    </div>
+                    <Orders/>
+                    <ReactQueryDevtools/>
+                </DashboardProvider>
             </QueryClientProvider>
         </>
     )
