@@ -2,19 +2,19 @@ class OrdersController < ApplicationController
 
   # @return all available orders
   def index
-    @orders = Order.all
-    render json: @orders
+    orders = Order.all
+    render json: orders
   end
 
 
   def create
-    @order = Order.create(orders_params)
-    service = OrderCreationService.new(@order)
+    order = Order.create(orders_params)
+    service = OrderCreationService.new(order)
 
     if service.call
-      render json: @order
+      render json: order
     else
-      render json: { errors: @order.errors.full_messages }, status: 422
+      render json: { errors: order.errors.full_messages }, status: 422
     end
   end
 
