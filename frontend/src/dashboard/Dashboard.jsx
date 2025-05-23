@@ -1,9 +1,12 @@
 import './Dashboard.css'
+import {useContext} from "react";
+import DashboardContext from "../contexts/DashboardContext.jsx";
 
-function Dashboard({total}) {
+function Dashboard() {
+    const { totalOrders } = useContext(DashboardContext);
     return (
         <div className={'dashboard'}>
-            <h1>{total}</h1>
+            <h1>{totalOrders}</h1>
             <p>Total Orders</p>
         </div>
     )

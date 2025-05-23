@@ -1,7 +1,8 @@
 import {flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table';
 import {useGetOrders} from "./api.js";
 import './OrdersList.css';
-import Dashboard from "../dashboard/Dashboard.jsx";
+import {useContext, useEffect} from "react";
+import DashboardContext from "../contexts/DashboardContext.jsx";
 
 const columns = [
     {
@@ -26,6 +27,9 @@ const columns = [
 
 function OrdersList() {
     const { data = [] } = useGetOrders();
+    const { setTotalOrders } = useContext(DashboardContext);
+    setTotalOrders(data.length);
+
     const table = useReactTable({
         data: data,
         columns: columns,

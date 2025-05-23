@@ -7,6 +7,7 @@ import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import Orders from "./orders/Orders.jsx";
 import Dashboard from "./dashboard/Dashboard.jsx";
+import { DashboardProvider } from "./contexts/DashboardContext.jsx";
 
 const queryClient = new QueryClient();
 
@@ -15,11 +16,13 @@ function App() {
     return (
         <>
             <QueryClientProvider client={queryClient}>
-                <div>
-                    <Dashboard total={1000} />
-                </div>
-                <Orders/>
-                <ReactQueryDevtools/>
+                <DashboardProvider>
+                    <div>
+                        <Dashboard />
+                    </div>
+                    <Orders/>
+                    <ReactQueryDevtools/>
+                </DashboardProvider>
             </QueryClientProvider>
         </>
     )
