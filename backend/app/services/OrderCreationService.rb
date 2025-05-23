@@ -6,7 +6,7 @@ class OrderCreationService
   end
 
   def call
-    false unless @order.save
+    return false unless @order.save
     send_order_create_email
     true
   end
