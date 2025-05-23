@@ -1,0 +1,6 @@
+
+.add-order-button {
+    padding: 1em;
+    display: flex;
+    justify-content: end;
+}
