@@ -1,6 +1,7 @@
 import {flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table';
 import {useGetOrders} from "./api.js";
 import './OrdersList.css';
+import Dashboard from "../dashboard/Dashboard.jsx";
 
 const columns = [
     {
@@ -38,7 +39,6 @@ function OrdersList() {
                     return (
                     <tr key={headerGroup.id}>
                         {headerGroup.headers.map(header => {
-                            console.log(header.column.getSize());
                             return (<th width={header.column.getSize()} key={header.id}>{header.column.columnDef.header}</th>);
                         })}
                     </tr>);

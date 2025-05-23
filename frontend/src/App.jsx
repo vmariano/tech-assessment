@@ -6,6 +6,7 @@ import './App.css'
 import {QueryClient, QueryClientProvider} from "@tanstack/react-query";
 import {ReactQueryDevtools} from '@tanstack/react-query-devtools';
 import Orders from "./orders/Orders.jsx";
+import Dashboard from "./dashboard/Dashboard.jsx";
 
 const queryClient = new QueryClient();
 
@@ -14,10 +15,8 @@ function App() {
     return (
         <>
             <QueryClientProvider client={queryClient}>
-                <div className="card">
-                    <button onClick={() => setCount((count) => count + 1)}>
-                        count is {count}
-                    </button>
+                <div>
+                    <Dashboard total={1000} />
                 </div>
                 <Orders/>
                 <ReactQueryDevtools/>
