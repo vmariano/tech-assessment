@@ -1,22 +1,25 @@
 import {flexRender, getCoreRowModel, useReactTable} from '@tanstack/react-table';
 import {useGetOrders} from "./api.js";
+import './OrdersList.css';
 
 const columns = [
     {
         accessorKey: 'id',
         header: '#',
         cell: props => props.getValue(),
+        size: 30,
     },
     {
         accessorKey: 'name',
         header: 'Order name',
         cell: props => props.getValue(),
-
+        size: 150
     },
     {
         accessorKey: 'description',
         header: 'Description',
         cell: props => props.getValue(),
+        size: 250
     }
 ];
 
@@ -35,6 +38,7 @@ function OrdersList() {
                     return (
                     <tr key={headerGroup.id}>
                         {headerGroup.headers.map(header => {
+                            console.log(header.column.getSize());
                             return (<th width={header.column.getSize()} key={header.id}>{header.column.columnDef.header}</th>);
                         })}
                     </tr>);
